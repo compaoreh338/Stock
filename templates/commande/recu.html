@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+      <h1>Reçu de Commande</h1>
+    <p>ID de Commande: {{ commande.id }}</p>
+    <p>Client: {{ commande.client }}</p>
+    <p>Date: {{ commande.date }}</p>
+    <p>Montant Total: {{ commande.montant_total }} FCFA</p>
+    <hr>
+    <h2>Produits</h2>
+
+       <div>
+           {{ commande.produit.nom }} - {{ commande.produit.prix }} FCFA
+       </div>
+
+
+    <footer class="mt-4">
+        <p>Merci pour votre commande !</p>
+    </footer>
+    </div>
+</div>
+{% endblock content%}

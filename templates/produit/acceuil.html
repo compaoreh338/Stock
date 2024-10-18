@@ -1,0 +1,118 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<br>
+<div class="row">
+
+ {% if messages %}
+        {% for message in messages %}
+            <div class="bg-success w-75 text-white text-center p-3 container alert alert-info alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+{% endif %}
+
+
+
+
+	<div class="row">
+			<div class="col-md-5">
+
+		<h5>Clients:</h5>
+					<a class="btn btn-primary  btn-sm btn-block" href="{% url 'ajouter_client' %}">Créer Un Client</a>
+
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Id</th>
+					<th>Nom</th>
+					<th>Telephone</th>
+					<th>Date</th>
+					<th>Details</th>
+
+				</tr>
+				{% for client in clients  %}
+				<tr>
+				<th><a href="{% url 'client' client.id %}">{{client.id}}</a></th>
+				<th>{{client.nom}}</th>
+				<th>{{client.telephone}}</th>
+				<th>{{client.date_creation}}</th>
+				<th><a class="btn btn-sm btn-success" href="{% url 'client' client.id %}">Details</a></th>
+
+               </tr>
+				{% endfor  %}
+
+			</table>
+		</div>
+	</div>
+  <div class="vr"></div>
+		<div class="col-md-6">
+		<h5>Les  Commandes</h5>
+					<a class="btn btn-primary  btn-sm btn-block" href="{% url 'ajouter_commande' %}">Ajouter une Commande</a>
+
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Produits</th>
+					<th>Client</th>
+					<th>Date de la commande</th>
+                    <th>Quantité</th>
+					<th>Status</th>
+					<th>Mise à Jour</th>
+					<th>Supprimer</th>
+					<th>Recu</th>
+				</tr>
+					{% for commande in commandes  %}
+				<tr>
+				<th>{{commande.produit}}</th>
+				<th>{{commande.client}}</th>
+				<th>{{commande.date_creation}}</th>
+				<th>{{commande.quantite}}</th>
+				<th>{{commande.status}}</th>
+				<th><a class="btn btn-sm btn-info" href="{% url 'editer_commande' commande.id %}">mettre a jour</a> </th>
+				<th><a class="btn btn-sm btn-danger" href="{% url 'supprimer_commande' commande.id %}">supprimer</a> </th>
+					<th><a class="btn btn-sm btn-secondary" href="{% url 'recevoir_commande' commande.id %}">Recu</a> </th>
+               </tr>
+				{% endfor  %}
+
+			</table>
+		</div>
+	</div>
+	</div>
+	<hr class="border-5 w-100">
+
+	<div class="col-md-12">
+		<h5>Les  produits</h5>
+					<a class="btn btn-primary  btn-sm btn-block" href="{% url 'ajouter_produit' %}">Ajouter un produit</a>
+
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Nom</th>
+					<th>Prix</th>
+					<th>Categorie</th>
+					<th>Mise à Jour</th>
+					<th>Supprimer</th>
+				</tr>
+					{% for produit in produits  %}
+				<tr>
+				<th>{{produit.nom}}</th>
+				<th>{{produit.prix}}</th>
+				<th>{{produit.categorie}}</th>
+				<th><a class="btn btn-sm btn-info" href="{% url 'editer_produit' produit.id %}">mettre a jour</a> </th>
+				<th><a class="btn btn-sm btn-danger" href="{% url 'supprimer_produit' produit.id %}">supprimer</a> </th>
+               </tr>
+				{% endfor  %}
+
+			</table>
+		</div>
+	</div>
+
+</div>
+
+
+{% endblock content%}

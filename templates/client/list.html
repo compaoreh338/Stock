@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+{% block content %}
+
+    <h1 class="text-center">Liste des clients</h1>
+
+	<br>
+
+<div class="row">
+	<div class="col-md">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'ajouter_client' %}">Créer Un Client</a>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Nom</th>
+					<th>Telephone</th>
+					<th>Nombre de commandes</th>
+					<th>Mise à Jour</th>
+					<th>Supprimer</th>
+				</tr>
+				{% for client in clients %}
+				<tr>
+				<th>{{client.nom}}</th>
+				<th>{{client.telephone}}</th>
+				<th>  <p>{{ client.nom }} a {{ client.commande_count }} commandes.</p></th>
+					<th><a class="btn btn-sm btn-success" href="{% url 'client' client.id %}">Details</a></th>
+
+
+				<th><a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'editer_client' client.id %}">Modifier le Client</a>
+ </th>
+				<th><a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'supprimer_client' client.id %}">Supprimer le Client</a>
+</th>
+
+               </tr>
+				{% endfor  %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock content%}

@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+{% block content %}
+<h1 class="text-center h_sm">Liste des produits</h1>
+<div class="row">
+	<div class="col-md">
+					<a class="btn btn-primary  btn-sm btn-block" href="{% url 'ajouter_produit' %}">Ajouter un produit</a>
+
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Nom</th>
+					<th>Prix</th>
+					<th>Tag</th>
+					<th>Mise à Jour</th>
+					<th>Supprimer</th>
+				</tr>
+					{% for produit in produits  %}
+				<tr>
+				<th>{{produit.nom}}</th>
+				<th>{{produit.prix}}</th>
+					<th>{% for tag in produit.tag.all %}
+        <li>{{ tag.nom }}</li>
+    {% empty %}
+        <li>No tags available.</li>
+    {% endfor %}</th>
+				<th><a class="btn btn-sm btn-info" href="{% url 'editer_produit' produit.id %}">mettre a jour</a> </th>
+				<th><a class="btn btn-sm btn-danger" href="{% url 'supprimer_produit' produit.id %}">supprimer</a> </th>
+               </tr>
+				{% endfor  %}
+
+			</table>
+		</div>
+	</div>
+</div>
+</div>
+
+{% endblock content%}
+
