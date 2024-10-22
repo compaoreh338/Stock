@@ -3,7 +3,7 @@
 <h1 class="text-center h_sm">Liste des produits</h1>
 <div class="row">
 	<div class="col-md">
-					<a class="btn btn-primary  btn-sm btn-block" href="{% url 'ajouter_produit' %}">Ajouter un produit</a>
+					<a class="btn btn-primary  btn-sm btn-block" href="{% url 'ajouter_produit' %}"><i class="fa-solid fa-plus"></i></a>
 
 		<hr>
 		<div class="card card-body">
@@ -12,8 +12,7 @@
 					<th>Nom</th>
 					<th>Prix</th>
 					<th>Tag</th>
-					<th>Mise à Jour</th>
-					<th>Supprimer</th>
+					<th>Actions</th>
 				</tr>
 					{% for produit in produits  %}
 				<tr>
@@ -24,8 +23,8 @@
     {% empty %}
         <li>No tags available.</li>
     {% endfor %}</th>
-				<th><a class="btn btn-sm btn-info" href="{% url 'editer_produit' produit.id %}">mettre a jour</a> </th>
-				<th><a class="btn btn-sm btn-danger" href="{% url 'supprimer_produit' produit.id %}">supprimer</a> </th>
+				<th class="d-flex justify-content-around gap-2"><a class="btn btn-sm btn-info" href="{% url 'editer_produit' produit.id %}"><i class="fas fa-edit"></i></a>
+				<a class="btn btn-sm btn-danger" href="{% url 'supprimer_produit' produit.id %}"><i class="fas fa-trash"></i></a> </th>
                </tr>
 				{% endfor  %}
 

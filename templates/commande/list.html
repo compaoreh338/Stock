@@ -4,7 +4,7 @@
 <h1 class="text-center">Liste des commandes</h1>
 <div class="row">
 	<div class="col-md">
-        			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'ajouter_commande' %}">Ajouter une Commande</a>
+        			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'ajouter_commande' %}"><i class="fa-solid fa-plus"></i></a>
 
 		<hr>
 		<div class="card card-body">
@@ -14,9 +14,7 @@
 					<th>Client</th>
 					<th>Date de la commande</th>
 					<th>Status</th>
-					<th>Mise à Jour</th>
-					<th>Supprimer</th>
-					<th>Recu</th>
+					<th>Actions</th>
 				</tr>
 					{% for commande in commandes  %}
 				<tr>
@@ -24,9 +22,9 @@
 				<th>{{commande.client}}</th>
 				<th>{{commande.date_creation}}</th>
 				<th>{{commande.status}}</th>
-				<th><a class="btn btn-sm btn-info" href="{% url 'editer_commande' commande.id %}">mettre a jour</a> </th>
-				<th><a class="btn btn-sm btn-danger" href="{% url 'supprimer_commande' commande.id %}">supprimer</a> </th>
-               <th><a class="btn btn-sm btn-secondary" href="{% url 'recevoir_commande' commande.id %}">Recu</a> </th>
+				<th class="d-flex justify-content-around gap-2"><a class="btn btn-sm btn-info" href="{% url 'editer_commande' commande.id %}"><i class="fas fa-edit"></i></a>
+				<a class="btn btn-sm btn-danger" href="{% url 'supprimer_commande' commande.id %}"><i class="fas fa-trash"></i></a>
+               <a class="btn btn-sm btn-secondary" href="{% url 'recevoir_commande' commande.id %}"><i class="fa-solid fa-file-pdf"></i></a> </th>
 				</tr>
 				{% endfor  %}
 

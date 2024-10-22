@@ -7,7 +7,7 @@
 
 <div class="row">
 	<div class="col-md">
-			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'ajouter_client' %}">Créer Un Client</a>
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'ajouter_client' %}"><i class="fa-solid fa-plus"></i></a>
 		<hr>
 		<div class="card card-body">
 			<table class="table table-sm">
@@ -15,20 +15,20 @@
 					<th>Nom</th>
 					<th>Telephone</th>
 					<th>Nombre de commandes</th>
-					<th>Mise à Jour</th>
-					<th>Supprimer</th>
+					<th>Actions</th>
 				</tr>
 				{% for client in clients %}
 				<tr>
 				<th>{{client.nom}}</th>
 				<th>{{client.telephone}}</th>
 				<th>  <p>{{ client.nom }} a {{ client.commande_count }} commandes.</p></th>
-					<th><a class="btn btn-sm btn-success" href="{% url 'client' client.id %}">Details</a></th>
 
 
-				<th><a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'editer_client' client.id %}">Modifier le Client</a>
- </th>
-				<th><a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'supprimer_client' client.id %}">Supprimer le Client</a>
+				<th class="d-flex justify-content-around gap-2">
+					<a class="btn btn-sm btn-success" href="{% url 'client' client.id %}"><i class="fa-solid fa-circle-info"></i></a>
+					<a class="btn btn-warning  btn-sm btn-block" href="{% url 'editer_client' client.id %}"><i class="fas fa-edit"></i></a>
+
+				<a class="btn btn-danger  btn-sm btn-block" href="{% url 'supprimer_client' client.id %}"><i class="fas fa-trash"></i></a>
 </th>
 
                </tr>

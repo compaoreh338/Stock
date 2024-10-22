@@ -26,4 +26,4 @@ class Produit(models.Model):
 
 
     def __str__(self):
-        return f"Produit: {self.nom}, Prix: {self.prix} , Categorie: {self.categorie}"
+        return f" {self.nom}"

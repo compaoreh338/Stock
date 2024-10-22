@@ -20,7 +20,7 @@
 			<div class="col-md-5">
 
 		<h5>Clients:</h5>
-					<a class="btn btn-primary  btn-sm btn-block" href="{% url 'ajouter_client' %}">Créer Un Client</a>
+					<a class="btn btn-primary  btn-sm btn-block" href="{% url 'ajouter_client' %}"><i class="fa-solid fa-plus"></i></a>
 
 		<hr>
 		<div class="card card-body">
@@ -39,7 +39,7 @@
 				<th>{{client.nom}}</th>
 				<th>{{client.telephone}}</th>
 				<th>{{client.date_creation}}</th>
-				<th><a class="btn btn-sm btn-success" href="{% url 'client' client.id %}">Details</a></th>
+				<th><a class="btn btn-sm btn-success" href="{% url 'client' client.id %}"><i class="fa-solid fa-circle-info"></i></a></th>
 
                </tr>
 				{% endfor  %}
@@ -50,7 +50,7 @@
   <div class="vr"></div>
 		<div class="col-md-6">
 		<h5>Les  Commandes</h5>
-					<a class="btn btn-primary  btn-sm btn-block" href="{% url 'ajouter_commande' %}">Ajouter une Commande</a>
+					<a class="btn btn-primary  btn-sm btn-block" href="{% url 'ajouter_commande' %}"><i class="fa-solid fa-plus"></i></a>
 
 		<hr>
 		<div class="card card-body">
@@ -61,9 +61,8 @@
 					<th>Date de la commande</th>
                     <th>Quantité</th>
 					<th>Status</th>
-					<th>Mise à Jour</th>
-					<th>Supprimer</th>
-					<th>Recu</th>
+					<th>Actions</th>
+
 				</tr>
 					{% for commande in commandes  %}
 				<tr>
@@ -72,10 +71,12 @@
 				<th>{{commande.date_creation}}</th>
 				<th>{{commande.quantite}}</th>
 				<th>{{commande.status}}</th>
-				<th><a class="btn btn-sm btn-info" href="{% url 'editer_commande' commande.id %}">mettre a jour</a> </th>
-				<th><a class="btn btn-sm btn-danger" href="{% url 'supprimer_commande' commande.id %}">supprimer</a> </th>
-					<th><a class="btn btn-sm btn-secondary" href="{% url 'recevoir_commande' commande.id %}">Recu</a> </th>
-               </tr>
+				<th class="d-flex justify-content-around gap-2">
+					<a class="btn  btn-sm btn-warning" href="{% url 'editer_commande' commande.id %}"><i class="fas fa-edit"></i></a>
+				<a class="btn btn-sm btn-danger" href="{% url 'supprimer_commande' commande.id %}"><i class="fas fa-trash"></i></a>
+					<a class="btn btn-sm btn-secondary" href="{% url 'recevoir_commande' commande.id %}"><i class="fa-solid fa-file-pdf"></i></a>
+               </th>
+				</tr>
 				{% endfor  %}
 
 			</table>
@@ -86,7 +87,7 @@
 
 	<div class="col-md-12">
 		<h5>Les  produits</h5>
-					<a class="btn btn-primary  btn-sm btn-block" href="{% url 'ajouter_produit' %}">Ajouter un produit</a>
+					<a class="btn btn-primary  btn-sm btn-block" href="{% url 'ajouter_produit' %}"><i class="fa-solid fa-plus"></i></a>
 
 		<hr>
 		<div class="card card-body">
@@ -95,16 +96,16 @@
 					<th>Nom</th>
 					<th>Prix</th>
 					<th>Categorie</th>
-					<th>Mise à Jour</th>
-					<th>Supprimer</th>
+					<th>Actions</th>
+
 				</tr>
 					{% for produit in produits  %}
 				<tr>
 				<th>{{produit.nom}}</th>
 				<th>{{produit.prix}}</th>
 				<th>{{produit.categorie}}</th>
-				<th><a class="btn btn-sm btn-info" href="{% url 'editer_produit' produit.id %}">mettre a jour</a> </th>
-				<th><a class="btn btn-sm btn-danger" href="{% url 'supprimer_produit' produit.id %}">supprimer</a> </th>
+				<th class="d-flex justify-content-around gap-2"><a class="btn btn-sm btn-warning" href="{% url 'editer_produit' produit.id %}"><i class="fas fa-edit"></i></a>
+				<a class="btn btn-sm btn-danger" href="{% url 'supprimer_produit' produit.id %}"><i class="fas fa-trash"></i></a> </th>
                </tr>
 				{% endfor  %}
 
